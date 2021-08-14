@@ -1,6 +1,6 @@
 # Design of Polling system
 
-### devided in the follwing three layer
+### divided in the follwing three layer
 
 1. data access layer(currently implemented as a in-memory db)  
 
@@ -14,7 +14,7 @@
 
 2. application logic layer
 	
-	it provide the fllowing **REST** api:
+	it provide the following **REST** api:
 	* **set\_candidate**(POST) - takes a list of candidates
 	* **get\_candidate**(GET) - returns a list of candidates
 	* **get\_vote\_count**(GET) - returns vote count of all the candidates
