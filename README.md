@@ -27,3 +27,6 @@
 ### How to launch
 * npm install
 * nodejs app.js
+
+### How to use
+* localhost:3000
