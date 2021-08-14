@@ -1,0 +1,50 @@
+<html>
+	<head>
+	<script>
+function vote(){
+	let voter_id=document.querySelector("#voter_id").value;
+	let choice=document.querySelector("#candidates").value;
+	fetch("/cast_vote",{
+		method:"POST",
+		headers: {
+		    'Content-Type': 'application/json',
+  		},
+		body:JSON.stringify({"choice":choice,"voter":voter_id})
+		})
+		.then(res=>res.json())
+		.then(res=>{
+			if(res.result == "ok"){
+				alert("vote casted");
+			}
+			else{
+				alert("u already voted!!!");
+			}
+		})
+		.catch(err=>{alert(err)});
+}
+window.onload=()=>{
+	document.querySelector("#vote_button").addEventListener("click",vote);
+	//get the candidate list
+	fetch("/get_candidates")
+		.then(res=>res.json())
+		.then(res=>{
+			let candidates=document.querySelector("#candidates");
+			for(let c of res.candidates){
+				let opt=document.createElement("option");
+				opt.text=c;
+				candidates.options.add(opt);
+			}
+	
+		})
+		.catch(err=>{alert(err)});
+};
+	</script>
+	</head>
+	<body>
+		<form>
+			your id:<input id=voter_id type=text><br>
+			choice:<select id=candidates ></select><br>
+			<input type=button id=vote_button value=vote>
+		</form>
+	</body>
+</html>

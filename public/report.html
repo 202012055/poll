@@ -1,0 +1,23 @@
+<html>
+	<head>
+	<script>
+window.onload=()=>{
+	fetch("/get_vote_count")
+		.then(res=>res.json())
+		.then(res=>{
+			let txt="";
+			for(let c in res.votes){
+				txt+=(c+": "+res.votes[c]+"<br>"); 
+			}
+			document.querySelector("#report_text").innerHTML=txt;
+	
+		})
+		.catch(err=>{alert(err)});
+};
+	</script>
+	</head>
+	<body>
+		<h1> Voting Report </h1>
+		<div id=report_text>
+	</body>
+</html>

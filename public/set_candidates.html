@@ -1,0 +1,33 @@
+<html>
+	<head>
+	<script>
+function setCandidates(){
+	let candidates=(document.querySelector("#candidate_list").value.split('\n'));
+	fetch("/set_candidates",{
+		method:"POST",
+		headers: {
+		    'Content-Type': 'application/json',
+  		},
+		body:JSON.stringify({"candidates":candidates})
+		})
+		.then(res=>res.json())
+		.then(res=>{
+			if(res.result == "ok"){
+				alert("candidates set successfully");
+			}
+		})
+		.catch(err=>{alert(err)});
+}
+window.onload=()=>{
+	document.querySelector("#set_button").addEventListener("click",setCandidates);
+};
+	</script>
+	</head>
+	<body>
+		<form>
+			enter candidate names:<br>
+			<textarea id=candidate_list ></textarea><br>
+			<input type=button id=set_button value=set>
+		</form>
+	</body>
+</html>

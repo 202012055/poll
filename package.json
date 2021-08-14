@@ -1,0 +1,25 @@
+{
+  "name": "poll",
+  "version": "1.0.0",
+  "description": "app for online polling",
+  "main": "app.js",
+  "directories": {
+    "lib": "lib"
+  },
+  "scripts": {
+    "start": "./autorestarter"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/202012055/poll.git"
+  },
+  "author": "202012055",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/202012055/poll/issues"
+  },
+  "homepage": "https://github.com/202012055/poll#readme",
+  "dependencies": {
+    "express": "^4.17.1"
+  }
+}

@@ -1,0 +1,32 @@
+<html>
+	<head>
+	<script>
+window.onload=()=>{
+	fetch("/get_vote_count")
+		.then(res=>res.json())
+		.then(res=>{
+			let first="NONE";
+			let second="NONE";
+			res.votes["NONE"]=-1;
+			for(let c in res.votes){
+				if(res.votes[c]>res.votes[first]){
+					second=first;
+					first=c;
+				}else if(res.votes[c]>res.votes[second]){
+					second=c;	
+				}
+			}
+			let txt="";
+			txt+="won: "+first+"("+res.votes[first]+")<br>";
+			txt+="lost: "+second+"("+res.votes[second]+")";
+			document.querySelector("#result_text").innerHTML=txt;
+		})
+		.catch(err=>{alert(err)});
+};
+	</script>
+	</head>
+	<body>
+		<h1> Voting Results</h1>
+		<div id=result_text>
+	</body>
+</html>

@@ -1,0 +1,10 @@
+#!/bin/bash
+node app.js &
+pid=$!
+while out=`inotifywait --format '%f' -q -r -e close_write . @./public @./node_modules`;do
+	[[ $out == .* ]] && continue;
+	kill $pid;
+	node app.js &
+	pid=$!
+done
+
