@@ -23,3 +23,7 @@
 3. presentation layer
 	
 	just a simple website to show all this stuff
+
+### How to launch
+* npm install
+* nodejs app.js
